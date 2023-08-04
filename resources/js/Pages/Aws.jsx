@@ -2,7 +2,7 @@ import Navigation from '@/Components/Navigation';
 import WeatherData from '@/Components/WeatherData';
 import Layout from '@/Layouts/Layout';
 import { faBatteryFull, faCompass, faDroplet, faGauge, faSun, faTemperatureLow, faTemperatureQuarter, faWind } from '@fortawesome/free-solid-svg-icons';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
 import Moment from 'react-moment';
 function Aws(props) {
@@ -27,12 +27,19 @@ function Aws(props) {
         })
     }
     
-    useEffect(() => {
+    useLayoutEffect(() => {
         getData(props.id);
+        let interval = setInterval(() => {
+            getData(props.id);
+        }, (5 * 60 * 1000));
+
+        return () => {
+            clearInterval(interval);
+        }
+
     }, []);
-    console.log(props.id);
+    
     function getDirection(angle) {
-        console.log(angle)
         let  index = Math.round(((angle %= 360) < 0 ? angle + 360 : angle) / 45) % 8
         return ["N", "NE", "E", "SE", "S", "SW", "W", "NW"][index];
     }
