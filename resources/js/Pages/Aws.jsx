@@ -18,7 +18,11 @@ function Aws(props) {
         .then(res => res.ok && res.json())
         .then(res => {
             if(!res.error) {
-                setData(res.result.filter(aws => aws.siteID == props.id)[0])
+                let found = res.result.filter(aws => aws.siteID == props.id);
+
+                if(found.length > 0) {
+                    setData(res.result.filter(aws => aws.siteID == props.id)[0])
+                }
             }
         })
     }
@@ -26,7 +30,7 @@ function Aws(props) {
     useEffect(() => {
         getData(props.id);
     }, []);
-
+    console.log(props.id);
     function getDirection(angle) {
         console.log(angle)
         let  index = Math.round(((angle %= 360) < 0 ? angle + 360 : angle) / 45) % 8
