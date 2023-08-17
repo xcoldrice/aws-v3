@@ -21,3 +21,7 @@ Route::get('/site/{id}',  function($id) {
         'id' => base64_decode($id),
     ]);
 })->name('aws.site');
+
+Route::get('/secret/ict-tool',  function() {
+    return Inertia::render('Icttool',);
+})->name('ict.site');
