@@ -122,7 +122,7 @@ function Aws(props) {
                             fontWeight:'bold'
                         }}
                     >
-                        Accumulated rainfall from 12:01 AM: {data?.otherParameters?.accumRainfall24h ?? 0}
+                        Accumulated rainfall from 12:01 AM: {data?.otherParameters?.accumulated_rain_00UTC ?? 0}
                     </Card.Body>
                 </Card>
             </Col>
