@@ -124,7 +124,7 @@ function Aws(props) {
                             fontWeight:'bold'
                         }}
                     >
-                        Accumulated rainfall from 12:01 AM:<Card.Text style={{color:'white',  WebkitTextStroke: '1px #F8F8F8',textShadow: '4px 2px 2px #045282',letterSpacing: '0.3em',fontSize:'3rem',textAlign:'center',fontWeight:'bold'}}>{ data?.otherParameters?.accumulated_rain_00UTC ?? 0} mm </Card.Text>
+                        Accumulated rainfall from 12:01 AM:<Card.Text style={{color:'white',  WebkitTextStroke: '1px #F8F8F8',textShadow: '4px 2px 2px #045282',letterSpacing: '0.3em',fontSize:'5rem',textAlign:'center',fontWeight:'bold'}}>{ data?.otherParameters?.accumulated_rain_00UTC ?? 0} mm </Card.Text>
                     </Card.Body>
                 </Card>
             </Col>
