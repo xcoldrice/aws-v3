@@ -1,7 +1,7 @@
 import Navigation from '@/Components/Navigation';
 import WeatherData from '@/Components/WeatherData';
 import Layout from '@/Layouts/Layout';
-import { faBatteryFull, faCompass, faDroplet, faGauge, faSun, faTemperatureLow, faTemperatureQuarter, faWind } from '@fortawesome/free-solid-svg-icons';
+import { faBatteryFull, faCompass, faDroplet, faGauge, faSun, faTemperatureLow, faTemperatureQuarter, faWind, faFire } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
 import Moment from 'react-moment';
@@ -88,10 +88,10 @@ function Aws(props) {
             icon: faTemperatureQuarter
         },
         {
-            name: 'Battery',
-            value : data.battVolt,
-            units: 'V',
-            icon: faBatteryFull
+            name: 'Heat Index',
+            value : data?.otherParameters?.heat_index,
+            units: '°C',
+            icon: faFire
         },
     ]
     return <>
@@ -114,7 +114,8 @@ function Aws(props) {
                             fontSize:'3rem'
                         }}
                     >
-                        <Moment format='[as of] LLL'>{data.dateTime}</Moment>
+                        BATTERY: { data.battVolt} <br />
+                        <Moment format='[data as of] LLL'>{data.dateTime}</Moment>
                     </Card.Title>
                     <Card.Body
                         style={{
