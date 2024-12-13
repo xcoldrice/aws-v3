@@ -9,7 +9,8 @@ function Aws(props) {
     const [data, setData] = useState({});
 
     async function getData(id) {
-        const token = btoa('user:pass')
+        //const token = btoa('user:pass')
+        const token = btoa('apiadminict:n4mCycLON3r1a')
         return await fetch(`https://api.meteopilipinas.gov.ph/v1/weatherstation`, {
             headers: {
                 authorization: 'Basic ' + token
